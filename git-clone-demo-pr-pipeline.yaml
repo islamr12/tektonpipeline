@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: git-clone-demo-pr
+spec:
+  pipelineRef:
+    resolver: git
+    params:
+    - name: url
+      value: https://github.com/tektoncd/catalog.git
+    - name: revision
+      value: main
+    - name: pathInRepo
+      value: pipeline/simple/0.1/simple.yaml
+    # Uncomment the following lines to use a secret with a token
+    # - name: gitToken
+    #   value: "secret-with-token"
+    # - name: gitTokenKey (optional, defaults to "token")
+    #   value: "token"
+  params:
+  - name: name
+    value: Ranni
