@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: git-clone-demo-tr
+spec:
+  taskRef:
+    resolver: git
+    params:
+    - name: url
+      value: https://github.com/tektoncd/catalog.git
+    - name: revision
+      value: main
+    - name: pathInRepo
+      value: task/git-clone/0.6/git-clone.yaml
+    # Uncomment the following lines to use a secret with a token
+    # - name: gitToken
+    #   value: "secret-with-token"
+    # - name: gitTokenKey (optional, defaults to "token")
+    #   value: "token"
